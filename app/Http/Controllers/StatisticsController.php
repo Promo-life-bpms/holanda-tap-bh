@@ -11,12 +11,12 @@ class StatisticsController extends Controller
     
     public function statistics($tag){
         $information = DB::table('tap')->select('id','ip', 'device','location', 'operative_system')->where('tag', $tag)->get()->toArray();
-        dd($information);
+        return $information;
     }
 
     public function Allstatistics(){
 
         $informacion = Tap::select('id','ip', 'device','location', 'operative_system','tag')->get()->toArray();
-        dd($informacion);
+        return $informacion;
     }
 }
