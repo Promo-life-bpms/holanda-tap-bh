@@ -16,17 +16,17 @@ class StatisticsController extends Controller
             'tap.device',
             'tap.location',
             'tap.operative_system',
-            'form.employee_number',
+            'form.route',
             'form.agency',
-            'form.route'
+            'form.employee_number'
             )->where('tap.tag', $tag)->get()->toArray();
 
-        dd($data);
+        return $data;
     }
 
     public function Allstatistics()
     {
-        $informacion = Tap::join('form', 'tap.tag', '=', 'form.tag')->select(
+        $information = Tap::join('form', 'tap.tag', '=', 'form.tag')->select(
             'tap.id',
             'tap.ip',
             'tap.device',
@@ -36,8 +36,7 @@ class StatisticsController extends Controller
             'form.agency',
             'form.employee_number',
             'tap.tag' 
-        )->get()->toArray();
-    
-        dd($informacion);
+            )->get()->toArray();
+        return $information;
     }
 }
