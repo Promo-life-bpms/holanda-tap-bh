@@ -10,13 +10,33 @@ class StatisticsController extends Controller
 {
     
     public function statistics($tag){
-        $information = DB::table('tap')->select('id','ip', 'device','location', 'operative_system')->where('tag', $tag)->get()->toArray();
-        return $information;
+        $data = DB::table('tap')->join('form', 'tap.tag', '=', 'form.tag')->select(
+            'tap.id',
+            'tap.ip',
+            'tap.device',
+            'tap.location',
+            'tap.operative_system',
+            'form.route',
+            'form.agency',
+            'form.employee_number'
+            )->where('tap.tag', $tag)->get()->toArray();
+
+        return $data;
     }
 
-    public function Allstatistics(){
-
-        $informacion = Tap::select('id','ip', 'device','location', 'operative_system','tag')->get()->toArray();
-        return $informacion;
+    public function Allstatistics()
+    {
+        $information = Tap::join('form', 'tap.tag', '=', 'form.tag')->select(
+            'tap.id',
+            'tap.ip',
+            'tap.device',
+            'tap.location',
+            'tap.operative_system',
+            'form.route',
+            'form.agency',
+            'form.employee_number',
+            'tap.tag' 
+            )->get()->toArray();
+        return $information;
     }
 }
