@@ -11,15 +11,14 @@
 
     <div class="bg-white p-8 border border-gray-300 shadow-md rounded-md max-w-md w-full">
 
-        <h2 class="text-2xl font-semibold mb-6 text-center">Completa tu información</h2>
-
+        <h2 class="text-2xl font-semibold mb-6 text-center"  style="font-size: 19px;">Estimada Furia Roja, para activar tu tarjeta, por favor responde el siguiente formulario</h2>
+    
         <form action="{{ route('tap.storage', ['tag'=> $id]) }}" method="post">
             @csrf
 
             <div class="mb-4">
                 <label for="route" class="block text-sm font-medium text-gray-600">Ruta</label>
                 <input type="text" name="route" id="route" class="mt-1 p-2 w-full border rounded-md" required>
-
             </div>
 
             <div class="mb-4">
